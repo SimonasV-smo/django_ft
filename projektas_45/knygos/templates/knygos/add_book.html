@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridėti knygą</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Pridėti naują knygą</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Pridėti</button>
+    </form>
+    <form action="{% url 'home' %}" method="get">
+        <button type="submit">Grįžti į pagrindinį puslapį</button>
+    </form>
+</body>
+</html>
