@@ -1,5 +1,5 @@
 """
-URL configuration for projektas_42 project.
+URL configuration for projektas_44 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,14 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.shortcuts import redirect
-
-# Peradresavimo funkcija pagrindiniam keliui
-def redirect_to_registration(request):
-    return redirect('renginiai')  # Nukreipiama į registracijos formą
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),               # Admin panelės maršrutas
-    path('', redirect_to_registration),            # Peradresavimas iš tuščio URL į registraciją
-    path('', include('forma.urls')),               # Įtraukiame aplikacijos „forma“ maršrutus
+    path('admin/', admin.site.urls),  # Django administratoriaus maršrutas
+    path('', RedirectView.as_view(url='/accounts/login/')),  # Pagrindinis nukreipimas į prisijungimo puslapį
+    path('accounts/', include('django.contrib.auth.urls')),  # Django autentifikacijos maršrutai (prisijungimas, atsijungimas ir kt.)
+    path('renginiai/', include('renginiai.urls')),  # Prijungiame aplikacijos "renginiai" maršrutus
 ]

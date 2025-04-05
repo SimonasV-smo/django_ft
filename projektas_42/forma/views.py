@@ -10,7 +10,7 @@ def registration_view(request):
             return redirect('participants')  # Peradresavimas į dalyvių sąrašą
     else:
         form = RegistrationForm()
-    return render(request, 'forma/registration.html', {'form': form})
+    return render(request, 'forma/renginiai.html', {'form': form})
 
 def participants_view(request):
     participants = Registration.objects.all()

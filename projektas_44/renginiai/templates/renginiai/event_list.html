@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renginių sąrašas</title>
+</head>
+<body>
+    <h1>Renginių sąrašas</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                <b>{{ event.title }}</b> - {{ event.description }}
+                <br> Data: {{ event.date }}
+                {% if event.id in registered_events %}
+                    <p>Jūs jau dalyvaujate šiame renginyje</p>
+                {% else %}
+                    <form action="{% url 'join_event' event.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Dalyvauti</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'home' %}" method="get">
+        <button type="submit">Grįžti</button>
+    </form>
+</body>
+</html>
