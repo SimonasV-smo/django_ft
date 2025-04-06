@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redaguoti užrašą</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Redaguoti užrašą</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Išsaugoti pakeitimus</button>
+    </form>
+    <a href="{% url 'notes_list' %}">Atgal į sąrašą</a>
+</body>
+</html>

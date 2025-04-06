@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ištrinti užrašą</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Ar tikrai norite ištrinti šį užrašą?</h1>
+    <p><strong>{{ note.title }}</strong>: {{ note.content }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Ištrinti</button>
+    </form>
+    <a href="{% url 'notes_list' %}">Atgal į sąrašą</a>
+</body>
+</html>

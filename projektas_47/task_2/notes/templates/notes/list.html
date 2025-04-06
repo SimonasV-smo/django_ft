@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Užrašų sąrašas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Užrašų sąrašas</h1>
+    <ul>
+        {% for note in notes %}
+        <li>
+            <strong>{{ note.title }}</strong>: {{ note.content }}
+            <a href="{% url 'notes_edit' note.pk %}">Redaguoti</a>
+            <a href="{% url 'notes_delete' note.pk %}">Ištrinti</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'notes_create' %}">Pridėti naują užrašą</a>
+</body>
+</html>
