@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vartotojo veiksmų žurnalas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Vartotojo veiksmų žurnalas</h1>
+
+    <!-- Paieškos forma -->
+    <form method="get" style="text-align: center; margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Ieškoti pagal veiksmą" value="{{ request.GET.q }}">
+        <button type="submit">Ieškoti</button>
+    </form>
+
+    <!-- Lentelė -->
+    <table>
+        <thead>
+            <tr>
+                <th>Vartotojas</th>
+                <th>Veiksmas</th>
+                <th>Laikas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>
+                    {% if log.user %}
+                        {{ log.user.username }}
+                    {% else %}
+                        Nėra vartotojo
+                    {% endif %}
+                </td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Puslapiavimas -->
+    <div style="text-align: center; margin-top: 20px;">
+        {% if logs.has_previous %}
+            <a href="?page={{ logs.previous_page_number }}">Ankstesnis</a>
+        {% endif %}
+        <span>Puslapis {{ logs.number }} iš {{ logs.paginator.num_pages }}</span>
+        {% if logs.has_next %}
+            <a href="?page={{ logs.next_page_number }}">Kitas</a>
+        {% endif %}
+    </div>
+</body>
+</html>
