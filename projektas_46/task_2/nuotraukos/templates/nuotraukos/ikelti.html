@@ -14,10 +14,8 @@
         <button type="submit" class="button">Įkelti</button>
     </form>
 
-    <!-- Rodyti įkeltą nuotrauką -->
-    {% if nuotrauka %}
-        <h2>Jūsų įkelta nuotrauka:</h2>
-        <img src="{{ nuotrauka.paveikslelis.url }}" alt="Įkelta nuotrauka" style="max-width: 400px;">
-    {% endif %}
+    <div style="margin-top: 20px;">
+        <a href="{% url 'home' %}" class="button">Grįžti į galeriją</a>
+    </div>
 </body>
 </html>

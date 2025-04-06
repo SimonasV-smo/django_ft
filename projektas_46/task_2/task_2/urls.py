@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from nuotraukos.views import ikelti_nuotrauka
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ikelti_nuotrauka, name='home'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include('nuotraukos.urls')),  # Aplikacijos maršrutai
+]
+
+# Konfigūracija įkeltų failų rodymui (tik esant DEBUG aplinkoje)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

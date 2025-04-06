@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerija</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Nuotraukų galerija</h1>
+
+    <div class="galerija">
+        {% for nuotrauka in page_obj %}
+            <div class="nuotrauka-item">
+                <img src="{{ nuotrauka.paveikslelis.url }}" alt="Nuotrauka">
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="button">Ankstesnis</a>
+        {% endif %}
+        <span>Puslapis {{ page_obj.number }} iš {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="button">Kitas</a>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'ikelti_nuotrauka' %}" class="button">Pridėti nuotrauką</a>
+    </div>
+</body>
+</html>
