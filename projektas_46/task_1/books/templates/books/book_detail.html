@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <div style="text-align: center;">
+        <p><b>Autorius:</b> {{ book.author }}</p>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <!-- Mygtukas grįžti į sąrašą -->
+        <a href="{% url 'home' %}" class="button">Grįžti į sąrašą</a>
+    </div>
+</body>
+</html>

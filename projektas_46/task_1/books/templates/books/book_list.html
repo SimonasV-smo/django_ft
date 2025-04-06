@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Knygų sąrašas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Knygų sąrašas</h1>
+
+    <!-- Paieškos forma -->
+    <form method="get" style="text-align: center; margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Ieškoti knygos..." value="{{ request.GET.q }}">
+        <button type="submit" class="button">Ieškoti</button>
+    </form>
+
+    <!-- Mygtukas pridėti naują knygą -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="{% url 'book_create' %}" class="button">Pridėti naują knygą</a>
+    </div>
+
+    <!-- Knygų sąrašas -->
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> by {{ book.author }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Puslapiavimo navigacija -->
+    <div style="text-align: center;">
+        {% if books.has_previous %}
+            <a href="?q={{ request.GET.q }}&page={{ books.previous_page_number }}" class="button">Ankstesnis</a>
+        {% endif %}
+        {% if books.has_next %}
+            <a href="?q={{ request.GET.q }}&page={{ books.next_page_number }}" class="button">Kitas</a>
+        {% endif %}
+    </div>
+</body>
+</html>

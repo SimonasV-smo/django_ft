@@ -1,0 +1,117 @@
+/* Bendras puslapio stilius */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Antraštės */
+h1 {
+    color: #333;
+    padding: 20px 0;
+}
+
+h2 {
+    color: #555;
+    padding: 10px 0;
+}
+
+/* Sąrašai */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 80%;
+}
+
+ul li {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tekstas */
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Mygtukai */
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Forma */
+form {
+    text-align: center;
+    margin: 20px auto;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"] {
+    width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Nuorodos */
+a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Centruoti tekstą */
+.text-center {
+    text-align: center;
+}
+
+/* Pagrindinis blokas */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
