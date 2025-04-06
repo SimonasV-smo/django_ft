@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Įkelti nuotrauką</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Įkelti nuotrauką</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ forma.as_p }}
+        <button type="submit" class="button">Įkelti</button>
+    </form>
+
+    <!-- Rodyti įkeltą nuotrauką -->
+    {% if nuotrauka %}
+        <h2>Jūsų įkelta nuotrauka:</h2>
+        <img src="{{ nuotrauka.paveikslelis.url }}" alt="Įkelta nuotrauka" style="max-width: 400px;">
+    {% endif %}
+</body>
+</html>
